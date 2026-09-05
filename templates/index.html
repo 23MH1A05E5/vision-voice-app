@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Vision & Voice{% endblock %}
+{% block content %}
+<div class="work-grid">
+
+  <section class="panel">
+    <h1>Show it a picture. Ask it out loud.</h1>
+    <p class="panel-sub">Upload an image, optionally record a spoken question, and get an answer back &mdash; as text and, if you asked out loud, as speech.</p>
+
+    <form id="multimodalForm" class="upload-form">
+
+      <div class="field-block">
+        <span class="field-label">1. Image</span>
+        <label class="dropzone" for="imageInput">
+          <img id="imagePreview" class="hidden" alt="Preview of the uploaded image">
+          <span id="dropzoneText">Click to choose a .jpg or .png</span>
+        </label>
+        <input type="file" id="imageInput" name="image" accept=".jpg,.jpeg,.png" hidden>
+      </div>
+
+      <div class="field-block">
+        <span class="field-label">2. Question (optional &mdash; skip for a general description)</span>
+        <div class="record-row">
+          <button type="button" id="recordBtn" class="btn btn-record">&#9679; Record</button>
+          <button type="button" id="stopBtn" class="btn btn-stop" disabled>&#9632; Stop</button>
+          <span id="recordStatus" class="record-status"></span>
+        </div>
+        <audio id="recordedAudioPlayer" class="hidden" controls></audio>
+      </div>
+
+      <button type="submit" id="submitBtn" class="btn btn-primary btn-wide">Ask</button>
+    </form>
+  </section>
+
+  <section id="resultBox" class="panel hidden">
+    <h2>Answer</h2>
+    <p id="answerText" class="answer-text"></p>
+    <audio id="answerAudio" class="hidden" controls></audio>
+  </section>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

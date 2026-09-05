@@ -1,0 +1,6 @@
+Flask
+google-genai
+gTTS
+Pillow
+Werkzeug
+gunicorn

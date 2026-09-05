@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Vision & Voice{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <span class="brand">Vision <span class="brand-accent">&</span> Voice</span>
+    {% if session.get('username') %}
+      <nav class="topbar-nav">
+        <span class="topbar-user">{{ session.get('username') }}</span>
+        <a href="{{ url_for('logout') }}" class="link-muted">Log out</a>
+      </nav>
+    {% endif %}
+  </header>
+
+  <main class="page">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

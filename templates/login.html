@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Log in - Vision & Voice{% endblock %}
+{% block content %}
+<div class="auth-card">
+  <h1>Log in</h1>
+  <p class="auth-sub">Ask questions about a picture, out loud.</p>
+
+  {% if signed_up %}
+    <p class="notice notice-ok">Account created. Log in to continue.</p>
+  {% endif %}
+  {% if error %}
+    <p class="notice notice-error">{{ error }}</p>
+  {% endif %}
+
+  <form method="POST" class="auth-form">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required autofocus>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+
+    <button type="submit" class="btn btn-primary">Log in</button>
+  </form>
+
+  <p class="auth-switch">No account yet? <a href="{{ url_for('signup') }}">Sign up</a></p>
+</div>
+{% endblock %}
